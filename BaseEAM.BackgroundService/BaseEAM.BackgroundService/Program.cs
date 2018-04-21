@@ -99,17 +99,6 @@ namespace BaseEAM.BackgroundService
 
             svc.ScheduleQuartzJob(q =>
             {
-                //ReorderItemsJob
-                q.WithJob(JobBuilder.Create<ReorderItemsJob>()
-                    .WithIdentity("ReorderItemsJob", "BackgroundJob")
-                    .Build);
-                q.AddTrigger(() => TriggerBuilder.Create()
-                    .WithSchedule(SimpleScheduleBuilder.RepeatHourlyForever(8)).Build());
-
-            }, true);
-
-            svc.ScheduleQuartzJob(q =>
-            {
                 //PMJob
                 q.WithJob(JobBuilder.Create<PMJob>()
                     .WithIdentity("PMJob", "BackgroundJob")
